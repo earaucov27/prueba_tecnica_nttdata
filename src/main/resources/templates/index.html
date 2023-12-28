@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Monedas</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h2>Listado de Monedas</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Unidad de Medida</th>
+        <th>Fecha</th>
+        <th>Valor</th>
+        <th>Código</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Usamos th:each para iterar sobre la lista de monedas -->
+    <tr th:each="moneda : ${monedas}">
+        <td th:text="${moneda.nombre}"></td>
+        <td th:text="${moneda.unidad_medida}"></td>
+        <td th:text="${moneda.fecha}"></td>
+        <td th:text="${moneda.valor}"></td>
+        <td th:text="${moneda.codigo}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
