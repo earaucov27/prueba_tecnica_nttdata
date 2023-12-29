@@ -23,9 +23,8 @@ public class MonedaService {
         return monedaDTOArray != null ? Arrays.asList(monedaDTOArray) : Collections.emptyList();
     }
 
-    public MonedaDTO obtenerMonedaPorId(String id) {
-        String url = "https://658c98b9859b3491d3f63c9b.mockapi.io/api/v1/monedas/" + id;
+    public MonedaDTO obtenerMonedaPorCodigo(String codigo) {
+        String url = "https://658c98b9859b3491d3f63c9b.mockapi.io/api/v1/monedas" + codigo;
         return restTemplate.getForObject(url, MonedaDTO.class);
     }
 }
-

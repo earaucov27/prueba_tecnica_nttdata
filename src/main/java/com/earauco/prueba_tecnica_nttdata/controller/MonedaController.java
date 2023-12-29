@@ -26,9 +26,9 @@ public class MonedaController {
         return monedas;
     }
 
-    @GetMapping("/monedas/{id}")
-    public MonedaDTO getMonedaPorId(@PathVariable String id) {
-        MonedaDTO moneda = monedaService.obtenerMonedaPorId(id);
+    @GetMapping("/monedas/{codigo}")
+    public MonedaDTO getMonedaPorCodigo(@PathVariable String codigo) {
+        MonedaDTO moneda = monedaService.obtenerMonedaPorCodigo(codigo);
         log.info(moneda.toString());
         return moneda;
     }

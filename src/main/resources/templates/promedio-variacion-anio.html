@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Promedio y Variación por Año</title>
+</head>
+<body>
+<h2>Promedio y Variación por Año</h2>
+<input type="number" id="anioInput" placeholder="Ingrese el año">
+<button onclick="calcularPromedioVariacion()">Calcular Promedio y Variación</button>
+<div id="promedioVariacionResultados"></div>
+
+<script>
+    function calcularPromedioVariacion() {
+        const anioIngresado = document.getElementById('anioInput').value;
+
+        // Filtra las monedas del año ingresado (asumiendo que los datos están en la lista 'monedas')
+        const monedasFiltradas = monedas.filter(moneda => {
+            const fecha = new Date(moneda.fecha);
+            return fecha.getFullYear() === parseInt(anioIngresado);
+        });
+
+        // Calcula el promedio de valores por mes
+        const promediosPorMes = {};
+        monedasFiltradas.forEach(moneda => {
+            const fecha = new Date(moneda.fecha);
+            const mes = fecha.getMonth() + 1;
+            const valor = moneda.valor;
+            promediosPorMes[mes] = (promediosPorMes[mes] || []);
+            promediosPorMes[mes].push(valor);
+        });
+
+        const promedios = {};
+        for (const mes in promediosPorMes) {
+            const valores = promediosPorMes[mes];
+            const suma = valores.reduce((suma, valor) => suma + valor, 0);
+            const promedio = suma / valores.length;
+            promedios[mes] = promedio.toFixed(3);
+        }
+
+        // Calcula el porcentaje de variación por mes
+        const variacionesPorMes = {};
+        for (let i = 1; i <= 12; i++) {
+            if (promediosPorMes[i]) {
+                const primerValor = promediosPorMes[i][0];
+                const ultimoValor = promediosPorMes[i][promediosPorMes[i].length - 1];
+                const porcentajeVariacion = ((ultimoValor - primerValor) / primerValor) * 100;
+                variacionesPorMes[i] = porcentajeVariacion.toFixed(2);
+            } else {
+                variacionesPorMes[i] = 'N/A';
+            }
+        }
+
+        const resultadosDiv = document.getElementById('promedioVariacionResultados');
+        resultadosDiv.innerHTML = `Año ingresado: ${anioIngresado}<br>`;
+        for (const mes in promedios) {
+            resultadosDiv.innerHTML += `Mes ${mes}: Promedio ${promedios[mes]}, Variación ${variacionesPorMes[mes]}%<br>`;
+        }
+    }
+</script>
+
+</body>
