@@ -13,7 +13,7 @@
     function calcularPromedioVariacion() {
         const anioIngresado = document.getElementById('anioInput').value;
 
-        // Filtra las monedas del año ingresado (asumiendo que los datos están en la lista 'monedas')
+        // Filtra las monedas del año ingresado
         const monedasFiltradas = monedas.filter(moneda => {
             const fecha = new Date(moneda.fecha);
             return fecha.getFullYear() === parseInt(anioIngresado);

@@ -1,0 +1,22 @@
+/* styles.css */
+
+/* Estilos para la fuente de Google Fonts */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Estilos para la tabla de Bootstrap */
+.table {
+    font-size: 14px; /* Tamaño de fuente para la tabla */
+}
+
+/* Estilos para las celdas de la tabla */
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+/* Estilos para las filas impares de la tabla */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f5f5f5; /* Color de fondo para filas impares */
+}
