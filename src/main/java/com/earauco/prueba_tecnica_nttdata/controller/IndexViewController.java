@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @Controller
-public class HtmlController {
+public class IndexViewController {
 
     private final MonedaService monedaService;
 
-    public HtmlController(MonedaService monedaService) {
+    public IndexViewController(MonedaService monedaService) {
         this.monedaService = monedaService;
     }
 

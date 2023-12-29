@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class PromedioVariacionAnioController {
+public class DiferenciaMesViewController {
 
-    @GetMapping("/promedio-variacion-anio")
-    public String mostrarPromedioVariacionAnio() {
-        return "promedio-variacion-anio";
+    @GetMapping("/diferencia-mes")
+    public String mostrarDiferenciaMes() {
+        return "diferencia-mes";
     }
 }
 

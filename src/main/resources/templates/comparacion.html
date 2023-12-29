@@ -1,47 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Comparación de Moneda</title>
 </head>
 <body>
-<h2>Comparación de Moneda</h2>
-<input type="text" id="fechaInput1" placeholder="Fecha 1 (yyyy-MM-dd)">
-<input type="text" id="fechaInput2" placeholder="Fecha 2 (yyyy-MM-dd)">
-<button onclick="calcularComparacion()">Comparar</button>
+<div class="container">
+    <h1 class="my-4">Comparación de Moneda</h1>
 
-<div id="comparacionResultados"></div>
+    <form id="comparacion-form">
+        <label for="fecha">Fecha (DD-MM-YYYY):</label>
+        <input type="text" id="fecha" name="fechaConsulta" required>
+        <button type="button" id="calcular-btn">Calcular</button>
+    </form>
 
+    <div id="resultados" style="display: none;">
+        <h2>Resultados:</h2>
+        <p>Valor en Fecha: <span id="valorEnFecha"></span></p>
+        <p>Valor Actual del Dólar: <span id="valorDolar"></span></p>
+        <p>Porcentaje de Variación: <span id="porcentajeDeVariacion"></span></p>
+        <p>Diferencia en Pesos: <span id="diferenciaEnPesos"></span></p>
+    </div>
+</div>
 
-<script>
-    function calcularComparacion() {
-        const fechaIngresada1 = document.getElementById('fechaInput1').value;
-        const fechaIngresada2 = document.getElementById('fechaInput2').value;
-
-        // Convierte las fechas ingresadas en objetos Date
-        const fechaSeleccionada1 = new Date(fechaIngresada1);
-        const fechaSeleccionada2 = new Date(fechaIngresada2);
-
-        // Obtiene el valor de la moneda para las fechas seleccionadas (asumiendo que los datos están en la lista 'monedas')
-        const monedaSeleccionada1 = monedas.find(moneda => new Date(moneda.fecha).getTime() === fechaSeleccionada1.getTime());
-        const monedaSeleccionada2 = monedas.find(moneda => new Date(moneda.fecha).getTime() === fechaSeleccionada2.getTime());
-
-        if (!monedaSeleccionada1 || !monedaSeleccionada2) {
-            alert("No se encontraron datos para las fechas seleccionadas.");
-            return;
-        }
-
-        // Calcula la diferencia en pesos y el porcentaje de variación
-        const diferenciaEnPesos = monedaSeleccionada2.valor - monedaSeleccionada1.valor;
-        const porcentajeVariacion = ((monedaSeleccionada2.valor - monedaSeleccionada1.valor) / monedaSeleccionada1.valor) * 100;
-
-        const resultadosDiv = document.getElementById('comparacionResultados');
-        resultadosDiv.innerHTML = `Fecha 1: ${fechaIngresada1}<br>
-                                     Valor 1: ${monedaSeleccionada1.valor}<br>
-                                     Fecha 2: ${fechaIngresada2}<br>
-                                     Valor 2: ${monedaSeleccionada2.valor}<br>
-                                     Diferencia en pesos: ${diferenciaEnPesos.toFixed(3)}<br>
-                                     Porcentaje de variación: ${porcentajeVariacion.toFixed(2)}%`;
-    }
-</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="/js/comparacion.js"></script>
 </body>
 </html>
