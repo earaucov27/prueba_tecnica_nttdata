@@ -1,22 +1,308 @@
 /* styles.css */
 
-/* Estilos para la fuente de Google Fonts */
-body {
-    font-family: 'Roboto', sans-serif;
+/* Variables de color */
+:root {
+    --color1: #02031a;
+    --color2: #021b2b;
+    --color3: #b10c43;
+    --color4: #ff0841;
+    --color5: #ebdfcc;
 }
 
-/* Estilos para la tabla de Bootstrap */
-.table {
-    font-size: 14px; /* Tamaño de fuente para la tabla */
+/* Estilos para el cuerpo de la página */
+body {
+    background-color: var(--color1); /* Color de fondo del cuerpo */
+    color: white; /* Color de texto principal */
+    font-family: 'Roboto', sans-serif; /* Fuente principal */
+}
+
+/* Estilos para el contenedor */
+.container {
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrar el contenedor en la página */
+    padding: 20px; /* Espaciado interno del contenedor */
+}
+
+/* Estilos para los encabezados */
+h1 {
+    color: var(--color3); /* Color de encabezado h1 */
+    margin-bottom: 20px; /* Espacio inferior para h1 */
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%; /* Ancho de la tabla al 100% del contenedor */
+    background-color: var(--color2); /* Color de fondo de la tabla */
+    color: white; /* Color de texto en la tabla */
+    border-collapse: collapse; /* Colapso de bordes de la tabla */
+    margin-bottom: 20px; /* Espacio inferior para la tabla */
 }
 
 /* Estilos para las celdas de la tabla */
-.table th,
-.table td {
-    vertical-align: middle;
+th, td {
+    padding: 10px; /* Espaciado interno de celdas */
+    text-align: left; /* Alineación de texto a la izquierda */
+    border-bottom: 1px solid var(--color3); /* Borde inferior de celdas */
+}
+
+/* Estilos para los enlaces de navegación */
+a {
+    color: var(--color4); /* Color de enlaces */
+    margin-right: 10px; /* Espacio derecho entre enlaces */
+    text-decoration: none; /* Sin subrayado en enlaces */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilos para el botón */
+.btn {
+    background-color: var(--color4); /* Color de fondo del botón */
+    color: white; /* Color de texto en el botón */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambio de cursor al pasar por encima */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-weight: bold; /* Texto en negrita */
+    border-radius: 5px; /* Borde redondeado */
+    transition: background-color 0.3s ease; /* Transición de color de fondo */
+}
+
+/* Estilos para el botón al pasar el ratón */
+.btn:hover {
+    background-color: var(--color5); /* Color de fondo al pasar el ratón */
+    color: var(--color4); /* Color de texto al pasar el ratón */
+}
+
+
+/* Comparacion.html */
+
+/* Estilos para el cuerpo de la página */
+body {
+    background-color: var(--color1); /* Color de fondo del cuerpo */
+    color: white; /* Color de texto principal */
+    font-family: 'Roboto', sans-serif; /* Fuente principal */
+    text-align: center; /* Alineación de texto centrada */
+    padding: 20px; /* Espaciado interno del cuerpo */
+}
+
+/* Estilos para el contenedor */
+.container {
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrar el contenedor en la página */
+    padding: 20px; /* Espaciado interno del contenedor */
+}
+
+/* Estilos para los encabezados */
+h1 {
+    color: var(--color3); /* Color de encabezado h1 */
+    margin-bottom: 20px; /* Espacio inferior para h1 */
+}
+
+/* Estilos para el formulario */
+form {
+    margin-bottom: 20px; /* Espacio inferior para el formulario */
+}
+
+/* Estilos para los botones */
+.btn {
+    background-color: var(--color4); /* Color de fondo del botón */
+    color: white; /* Color de texto en el botón */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambio de cursor al pasar por encima */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-weight: bold; /* Texto en negrita */
+    border-radius: 5px; /* Borde redondeado */
+    transition: background-color 0.3s ease; /* Transición de color de fondo */
+}
+
+/* Estilos para el botón al pasar el ratón */
+.btn:hover {
+    background-color: var(--color5); /* Color de fondo al pasar el ratón */
+    color: var(--color4); /* Color de texto al pasar el ratón */
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%; /* Ancho de la tabla al 100% del contenedor */
+    background-color: var(--color2); /* Color de fondo de la tabla */
+}
+
+/* diferencia-mes */
+
+/* Estilos para el cuerpo de la página */
+body {
+    background-color: var(--color1); /* Color de fondo del cuerpo */
+    color: white; /* Color de texto principal */
+    font-family: 'Roboto', sans-serif; /* Fuente principal */
+    text-align: center; /* Alineación de texto centrada */
+    padding: 20px; /* Espaciado interno del cuerpo */
+}
+
+/* Estilos para el contenedor */
+.container {
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrar el contenedor en la página */
+    padding: 20px; /* Espaciado interno del contenedor */
+}
+
+/* Estilos para los encabezados */
+h1 {
+    color: var(--color3); /* Color de encabezado h1 */
+    margin-bottom: 20px; /* Espacio inferior para h1 */
+}
+
+/* Estilos para el formulario */
+form {
+    margin-bottom: 20px; /* Espacio inferior para el formulario */
+}
+
+/* Estilos para los botones */
+.btn {
+    background-color: var(--color4); /* Color de fondo del botón */
+    color: white; /* Color de texto en el botón */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambio de cursor al pasar por encima */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-weight: bold; /* Texto en negrita */
+    border-radius: 5px; /* Borde redondeado */
+    transition: background-color 0.3s ease; /* Transición de color de fondo */
+}
+
+/* Estilos para el botón al pasar el ratón */
+.btn:hover {
+    background-color: var(--color5); /* Color de fondo al pasar el ratón */
+    color: var(--color4); /* Color de texto al pasar el ratón */
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%; /* Ancho de la tabla al 100% del contenedor */
+    background-color: var(--color2); /* Color de fondo de la tabla */
+    color: white; /* Color de texto en la tabla */
+    border-collapse: collapse; /* Colapso de bordes de celda */
+    margin-top: 20px; /* Espacio superior para la tabla */
+}
+
+/* Estilos para las filas de encabezado */
+table th {
+    background-color: var(--color3); /* Color de fondo de las celdas de encabezado */
+    padding: 10px; /* Espaciado interno de las celdas de encabezado */
+    text-align: left; /* Alineación de texto a la izquierda */
+}
+
+/* Estilos para las celdas de datos */
+table td {
+    padding: 10px; /* Espaciado interno de las celdas de datos */
+    text-align: left; /* Alineación de texto a la izquierda */
 }
 
 /* Estilos para las filas impares de la tabla */
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #f5f5f5; /* Color de fondo para filas impares */
+table tbody tr:nth-of-type(odd) {
+    background-color: var(--color1); /* Color de fondo para filas impares */
+}
+
+/* Estilos para los enlaces */
+a {
+    color: var(--color4); /* Color de enlaces */
+    text-decoration: none; /* Sin subrayado de enlaces */
+    font-weight: bold; /* Texto en negrita para enlaces */
+    transition: color 0.3s ease; /* Transición de color de enlaces */
+}
+
+/* Estilos para los enlaces al pasar el ratón */
+a:hover {
+    color: var(--color3); /* Color de enlaces al pasar el ratón */
+}
+
+/* promedio-variacion-anio.html*/
+
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color1);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: var(--color3);
+}
+
+/* Formulario */
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+    color: var(--color2);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Botón */
+button {
+    background-color: var(--color4);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--color3);
+}
+
+/* Resultados */
+#resultados {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--color1);
+    color: white;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid var(--color2);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Enlaces */
+a {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: var(--color3);
+}
+
+a:hover {
+    color: var(--color2);
 }

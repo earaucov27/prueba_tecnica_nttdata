@@ -8,16 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (calcularBtn && resultados) {
         calcularBtn.addEventListener("click", function () {
-            // Tipo de indicador que deseas consultar (en este caso, "dolar")
             const tipoIndicador = "dolar";
-
             // Obtener el campo de fechaConsulta
             const fechaConsultaInput = document.getElementById("fecha");
-
             if (fechaConsultaInput) {
                 const fechaConsulta = fechaConsultaInput.value; // Obtener la fecha ingresada por el usuario
-
-                // Construye la URL de la API para consultar el valor del indicador en la fecha especificada
                 const apiUrlFechaEspecifica = `https://mindicador.cl/api/${tipoIndicador}/${fechaConsulta}`;
 
                 fetch(apiUrlFechaEspecifica)

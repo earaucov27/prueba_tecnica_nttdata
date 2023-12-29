@@ -1,67 +1,87 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Diferencia entre Primer y Último Día del Mes</title>
+    <meta charset="UTF-8">
+    <title>Diferencia Moneda por Mes</title>
+
+    <!-- Importaciones GoogleFont -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
-<h2>Diferencia entre Primer y Último Día del Mes</h2>
-<select id="anioSelect">
-    <!-- Opciones para seleccionar el año -->
-</select>
-<select id="mesSelect">
-    <!-- Opciones para seleccionar el mes -->
-</select>
-<button onclick="calcularDiferenciaMes()">Calcular Diferencia</button>
-<div id="diferenciaResultados"></div>
+<div class="container">
+    <h1 class="my-4">Diferencia Moneda por Mes</h1>
 
-<script>
-    function calcularDiferenciaMes() {
-        const anioSeleccionado = document.getElementById('anioSelect').value;
-        const mesSeleccionado = document.getElementById('mesSelect').value;
+    <form id="comparacion-form">
+        <div class="row">
+            <div class="form-group col">
+                <label for="anio">Año:</label>
+                <select id="anio" class="form-control">
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                </select>
+            </div>
+            <div class="form-group col">
+                <label for="mes">Mes:</label>
+                <select id="mes" class="form-control">
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+            </div>
+            <button type="button" id="calcular-btn" class="btn">Calcular</button>
+        </div>
 
-        // Filtra las monedas del año y mes seleccionados (asumiendo que los datos están en la lista 'monedas')
-        const monedasFiltradas = monedas.filter(moneda => {
-            const fecha = new Date(moneda.fecha);
-            return fecha.getFullYear() === parseInt(anioSeleccionado) && fecha.getMonth() + 1 === parseInt(mesSeleccionado);
-        });
+    </form>
 
-        // Calcula la diferencia entre el primer y último día del mes
-        const primerDiaValor = monedasFiltradas[0].valor;
-        const ultimoDiaValor = monedasFiltradas[monedasFiltradas.length - 1].valor;
-        const diferenciaEnPesos = ultimoDiaValor - primerDiaValor;
+    <div id="resultados" style="display: none;">
+        <h2>Resultados:</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Valor</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Valor en Fecha:</td>
+                <td><span id="valorEnFecha"></span></td>
+            </tr>
+            <tr>
+                <td>Valor Actual del Dólar:</td>
+                <td><span id="valorDolar"></span></td>
+            </tr>
+            <tr>
+                <td>Porcentaje de Variación:</td>
+                <td><span id="porcentajeDeVariacion"></span>%</td>
+            </tr>
+            <tr>
+                <td>Diferencia en Pesos:</td>
+                <td>$<span id="diferenciaEnPesos"></span></td>
+            </tr>
+            <tr>
+                <td>Promedio del Mes:</td>
+                <td><span id="promedioDelMes"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <a th:href="@{/}" class="btn btn-secondary mt-4">Volver a Inicio</a>
+</div>
 
-        // Calcula el promedio de valores del mes
-        const sumaValores = monedasFiltradas.reduce((suma, moneda) => suma + moneda.valor, 0);
-        const promedioValores = sumaValores / monedasFiltradas.length;
-
-        // Calcula la moda de valores del mes
-        const contadorValores = {};
-        monedasFiltradas.forEach(moneda => {
-            const valor = moneda.valor.toFixed(3);
-            contadorValores[valor] = (contadorValores[valor] || 0) + 1;
-        });
-
-        let modaValores = [];
-        let maxFrecuencia = 0;
-
-        for (const valor in contadorValores) {
-            const frecuencia = contadorValores[valor];
-            if (frecuencia > maxFrecuencia) {
-                modaValores = [valor];
-                maxFrecuencia = frecuencia;
-            } else if (frecuencia === maxFrecuencia) {
-                modaValores.push(valor);
-            }
-        }
-
-        const resultadosDiv = document.getElementById('diferenciaResultados');
-        resultadosDiv.innerHTML = `Año seleccionado: ${anioSeleccionado}<br>
-                                     Mes seleccionado: ${mesSeleccionado}<br>
-                                     Diferencia entre el primer y último día: ${diferenciaEnPesos.toFixed(3)}<br>
-                                     Promedio de valores del mes: ${promedioValores.toFixed(3)}<br>
-                                     Moda de valores del mes: ${modaValores.join(', ')}`;
-    }
-</script>
-
+<script src="/js/diferencia-mes.js"></script>
 </body>
 </html>

@@ -1,8 +1,5 @@
-// Declarar una variable global para almacenar el valor del dólar
-let valorDolar;
-
 // URL de la API de Mindicador
-const apiUrl = "https://165.227.94.139/api";
+const apiUrl = "https://mindicador.cl/api";
 
 // Obtener referencia a la tabla en el HTML
 const tablaIndicadores = document.getElementById("tabla-indicadores");
@@ -31,11 +28,6 @@ fetch(apiUrl)
                 fila.appendChild(fechaCel);
 
                 tablaIndicadores.appendChild(fila);
-
-                // Si el indicador es "Dólar", almacena su valor en la variable global
-                if (data[indicador].nombre === "Dólar") {
-                    valorDolar = data[indicador].valor;
-                }
             }
         }
     })
