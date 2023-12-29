@@ -2,18 +2,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const calcularBtn = document.getElementById("calcular-btn");
     const resultados = document.getElementById("resultados");
     const valorEnFechaSpan = document.getElementById("valorEnFecha");
-    const valorDolarSpan = document.getElementById("valorDolar");
+    const valorMonedaSpan = document.getElementById("valorMoneda");
     const porcentajeDeVariacionSpan = document.getElementById("porcentajeDeVariacion");
     const diferenciaEnPesosSpan = document.getElementById("diferenciaEnPesos");
 
-    if (calcularBtn && resultados) {
+    if (calcularBtn && resultados && valorMonedaSpan) {
         calcularBtn.addEventListener("click", function () {
-            const tipoIndicador = "dolar";
-            // Obtener el campo de fechaConsulta
             const fechaConsultaInput = document.getElementById("fecha");
-            if (fechaConsultaInput) {
-                const fechaConsulta = fechaConsultaInput.value; // Obtener la fecha ingresada por el usuario
-                const apiUrlFechaEspecifica = `https://mindicador.cl/api/${tipoIndicador}/${fechaConsulta}`;
+            const tipoMonedaSelect = document.getElementById("tipoMoneda");
+
+            if (fechaConsultaInput && tipoMonedaSelect) {
+                const fechaConsulta = fechaConsultaInput.value;
+                const tipoMoneda = tipoMonedaSelect.value;
+
+                const apiUrlFechaEspecifica = `https://mindicador.cl/api/${tipoMoneda}/${fechaConsulta}`;
 
                 fetch(apiUrlFechaEspecifica)
                     .then(response => response.json())
@@ -21,48 +23,35 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (indicadorFechaEspecifica.serie && indicadorFechaEspecifica.serie.length > 0) {
                             const valorEnFecha = indicadorFechaEspecifica.serie[0].valor;
 
-                            // Obtener el valor actual del Dólar
-                            fetch('https://mindicador.cl/api')
+                            fetch(`https://mindicador.cl/api/${tipoMoneda}`)
                                 .then(response => response.json())
-                                .then(dailyIndicators => {
-                                    const valorDolar = dailyIndicators.dolar.valor;
+                                .then(indicadorMoneda => {
+                                    const valorMoneda = indicadorMoneda.serie[0].valor;
+                                    const porcentajeVariacion = ((valorEnFecha - valorMoneda) / valorMoneda) * 100;
+                                    const diferenciaEnPesos = valorEnFecha - valorMoneda;
 
-                                    // Calcular el porcentaje de variación
-                                    const porcentajeVariacion = ((valorEnFecha - valorDolar) / valorDolar) * 100;
-
-                                    // Calcular la diferencia en pesos
-                                    const diferenciaEnPesos = valorEnFecha - valorDolar;
-
-                                    // Actualizar los valores en el HTML
                                     valorEnFechaSpan.textContent = `$${valorEnFecha}`;
-                                    valorDolarSpan.textContent = `$${valorDolar}`;
+                                    valorMonedaSpan.textContent = `$${valorMoneda}`;
                                     porcentajeDeVariacionSpan.textContent = `${porcentajeVariacion.toFixed(3)}%`;
                                     diferenciaEnPesosSpan.textContent = `$${diferenciaEnPesos.toFixed(3)}`;
 
-                                    // Mostrar los resultados en la consola
-                                    console.log(`Valor en Fecha: $${valorEnFecha}`);
-                                    console.log(`Valor Actual del Dólar: $${valorDolar}`);
-                                    console.log(`Porcentaje de Variación: ${porcentajeVariacion.toFixed(3)}%`);
-                                    console.log(`Diferencia en Pesos: $${diferenciaEnPesos.toFixed(3)}`);
-
-                                    // Mostrar los resultados en el div "resultados"
                                     resultados.style.display = "block";
                                 })
                                 .catch(error => {
-                                    console.log('Error al obtener el valor actual del Dólar:', error);
+                                    console.log(`Error al obtener el valor actual de ${tipoMoneda}:`, error);
                                 });
                         } else {
                             console.log(`No se encontraron datos para la fecha ${fechaConsulta}.`);
                         }
                     })
                     .catch(error => {
-                        console.log(`Error al consultar el valor del Dólar para la fecha ${fechaConsulta}:`, error);
+                        console.log(`Error al consultar el valor de ${tipoMoneda} para la fecha ${fechaConsulta}:`, error);
                     });
             } else {
-                console.error("No se encontró el elemento fecha.");
+                console.error("No se encontraron los elementos fecha o tipoMoneda.");
             }
         });
     } else {
-        console.error("No se encontraron los elementos calcular-btn o resultados.");
+        console.error("No se encontraron los elementos calcular-btn, resultados o valorMoneda.");
     }
 });

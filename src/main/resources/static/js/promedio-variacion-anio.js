@@ -7,13 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
     if (calcularBtn && resultados) {
         calcularBtn.addEventListener("click", function () {
             // Tipo de indicador que deseas consultar
-            const tipoIndicador = "dolar"; // Cambiar a "uf" u otro tipo de indicador según sea necesario
+            const tipoMonedaSelect = document.getElementById("tipoMoneda");
+            const tipoIndicador = tipoMonedaSelect.value; // Obtener el tipo de moneda seleccionado
 
             // Obtener el año especificado
             const anioInput = document.getElementById("anio");
             const anio = anioInput.value;
 
-            // Construir la URL de la API para consultar el valor promedio del indicador en el año especificado
+            // Construir la URL de la API para consultar el valor
             const apiUrlAnioEspecifico = `https://mindicador.cl/api/${tipoIndicador}/${anio}`;
 
             // Realizar la consulta al año especificado
@@ -23,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     const promedioPorMes = calcularPromedioPorMes(data);
                     const porcentajeVariacion = calcularPorcentajeVariacion(data);
 
-                    // Asegurarse de que porcentajeVariacion sea un número antes de aplicar toFixed
                     if (typeof porcentajeVariacion === 'number') {
                         // Formatear el porcentajeVariacion como un número con 3 decimales
                         const porcentajeVariacionFormateado = porcentajeVariacion.toFixed(3);

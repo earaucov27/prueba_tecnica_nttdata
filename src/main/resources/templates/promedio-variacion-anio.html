@@ -18,6 +18,23 @@
                 <input type="text" id="anio" name="anioConsulta" class="form-control" required>
             </div>
             <div class="form-group col">
+                <label for="tipoMoneda">Tipo de Moneda:</label>
+                <select id="tipoMoneda" class="form-control">
+                    <option value="uf">UF</option>
+                    <option value="ivp">IVP</option>
+                    <option value="dolar">Dolar</option>
+                    <option value="dolar_intercambio">Dolar Intercambio</option>
+                    <option value="euro">EURO</option>
+                    <option value="ipc">IPC</option>
+                    <option value="utm">UTM</option>
+                    <option value="imacec">IMACEC</option>
+                    <option value="tpm">TPM</option>
+                    <option value="libra_cobre">Libra Cobre</option>
+                    <option value="tasa_desempleo">Tasa desempleo</option>
+                    <option value="bitcoin">Bitcoin</option>
+                </select>
+            </div>
+            <div class="form-group col">
                 <button type="button" id="calcular-btn" class="btn btn-primary">Calcular</button>
             </div>
         </div>
